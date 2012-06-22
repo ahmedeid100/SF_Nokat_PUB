@@ -5,8 +5,6 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-
     <div>
         <img src="../../Content/images/logo.jpg" />
     </div>
@@ -16,13 +14,9 @@
         <div class="fb-login-button" data-show-faces="true" data-width="400" data-max-rows="1">
         </div>
     </div>
-
-
     @Html.Hidden("FBID", "")
     @Html.Hidden("Name", "")
     @Html.Hidden("access_token", "")
-
-    
     <script type="text/javascript" language="javascript">
         window.fbAsyncInit = function () {
             FB.init({
@@ -61,8 +55,14 @@
                     $("#Name").val(response1.name);
                     $("#access_token").val(response.authResponse.accessToken);
                    
+                   var fbid = $("#FBID").val();
+                    var name = $("#Name").val();
+                    alert(fbid);
+                    $.post("/joke/AddMember", { FBID: fbid, Name: name }, function (data) {
+                        alert(data);
+                        });
                    
-                });
+                
             } else {
                 //console.log('User cancelled login or did not fully authorize.');
             }
@@ -70,20 +70,13 @@
     }
 
     $(document).ready(function () {
-        alert('ready');
-        var fbid = $("#FBID").val();
-        var name = $("#Name").val();
-        alert(fbid);
-        $.post("/joke/AddMember", { FBID: fbid, Name: name }, function (data) {
-            alert(data);
+        //alert('ready');
+        
 
         });
-        //$.post("/joke/AddMember", { FBID: $("#FBID").val(), Name: $("#Name").val() }, function (data) { alert(data); });
+        
     });
     </script>
-
-
     @RenderBody()
-
 </body>
 </html>
