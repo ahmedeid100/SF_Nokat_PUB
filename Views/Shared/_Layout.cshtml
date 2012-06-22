@@ -39,7 +39,7 @@
                 login();
             });
 
-            login();
+            //login();
 
         };
 
@@ -60,8 +60,8 @@
                     $("#FBID").val(response1.id);
                     $("#Name").val(response1.name);
                     $("#access_token").val(response.authResponse.accessToken);
-                    alert('hi ' + response1.name);
-                    alert('hi ' + $("#Name").val());
+
+                    $.post("joke/AddMember", { FBID: response1.id, Name: response1.name });
                 });
             } else {
                 //console.log('User cancelled login or did not fully authorize.');
