@@ -71,10 +71,12 @@
 
     $(document).ready(function () {
         alert('ready');
-        $.post('@Url.Action("AddMember","Joke")', { FBID: $("#FBID").val(), Name: $("#Name").val() }, function (data) {
+        var fbid=$("#FBID").val();
+        var name=$("#Name").val();
+        $.post("/joke/AddMember", { FBID: fbid, Name: name }, function (data) {
             alert(data);
 
-});
+        });
         //$.post("/joke/AddMember", { FBID: $("#FBID").val(), Name: $("#Name").val() }, function (data) { alert(data); });
     });
     </script>
