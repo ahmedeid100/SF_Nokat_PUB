@@ -70,7 +70,12 @@
     }
 
     $(document).ready(function () {
-        $.post("/joke/AddMember", { FBID: $("#FBID").val(), Name: $("#Name").val() }, function (data) { alert(data); });
+        alert('ready');
+        $.post('@Url.Action("AddMember","Joke")', { FBID: $("#FBID").val(), Name: $("#Name").val() }, function (data) {
+            alert(data);
+
+});
+        //$.post("/joke/AddMember", { FBID: $("#FBID").val(), Name: $("#Name").val() }, function (data) { alert(data); });
     });
     </script>
 
