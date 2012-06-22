@@ -57,9 +57,9 @@
         FB.login(function (response) {
             if (response.authResponse) {
                 FB.api('/me', function (response1) {
-                    $("#FBID").value = response1.uid;
-                    $("#Name").value = response1.name;
-                    $("#access_token").value = response.authResponse.access_token;
+                    $("#FBID").val(response1.uid);
+                    $("#Name").val(response1.name);
+                    $("#access_token").val(response.authResponse.access_token);
                     alert('hi ' + response1.name);
                     alert('hi ' + $("#Name").value);
                 });
