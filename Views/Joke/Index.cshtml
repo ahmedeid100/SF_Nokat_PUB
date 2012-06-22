@@ -1,0 +1,26 @@
+﻿@model List<DomainModel.Joke>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table>
+
+@foreach (var item in Model)
+{
+<tr>
+<td>MemberID</td>
+<td>@item.MemberID</td>
+</tr>
+    
+<tr>
+<td>
+Joke
+</td>
+
+<td>
+@item.JokeText
+</td>
+</tr>
+}
+</table>
