@@ -54,29 +54,22 @@
                     $("#FBID").val(response1.id);
                     $("#Name").val(response1.name);
                     $("#access_token").val(response.authResponse.accessToken);
-                   
-                   var fbid = $("#FBID").val();
+
+                    var fbid = $("#FBID").val();
                     var name = $("#Name").val();
                     alert(fbid);
                     $.post("/joke/AddMember", { FBID: fbid, Name: name }, function (data) {
                         alert(data);
-                        });
-                   
-                
+                    });
+                });
+
             } else {
                 //console.log('User cancelled login or did not fully authorize.');
             }
-            }
+
         });
     }
 
-    $(document).ready(function () {
-        //alert('ready');
-        
-
-        });
-        
-    });
     </script>
     @RenderBody()
 </body>
