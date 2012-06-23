@@ -13,9 +13,13 @@
                 @item.JokeText
             </td>
             <td>
-            <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
+            <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" /> 
+            <input type="text" readonly="readonly" id="@string.Format("lblInc_{0}",item.ID)" value=@item.Good />
             <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
+            <input type="text" readonly="readonly" id="@string.Format("lblDec_{0}",item.ID)" value=@item.Bad />
             <input type="submit" id="share" value="Share"  onclick="sharejoke(@item.ID,@item.JokeText,@item.Member.Name);"/>
+
+            <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value=@item.Rank />
             </td>
         </tr>
     }
@@ -24,19 +28,18 @@
 <script>
     function increaseVotejoke(jokeId) {
         $.post("/Joke/IncreaseJoke", { jokeID: jokeId }, function (data) {
-
-            alert(data);
+        
             var ranks = data.split('_');
-            alert(ranks[0]);
-            alert(ranks[1]);
-            //$('#detailedJokesDiv').html(data);
+            $("#lblInc_" + jokeId).val(ranks[1]);
+            $("#lblRnk_" + jokeId).val(ranks[0]);
         });
     }
 
     function decreaseVotejoke(jokeId) {
         $.post("/Joke/DecreaseJoke", { jokeID: jokeId }, function (data) {
-            alert(data);
-            //$('#detailedJokesDiv').html(data);
+            var ranks = data.split('_');
+            $("#lblDec_" + jokeId).val(ranks[1]);
+            $("#lblRnk_" + jokeId).val(ranks[0]);
         });
     }
 
