@@ -7,7 +7,7 @@
         <tr>
         <td>
         <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
-         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40"/>
+         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="30" height="30"/>
          </a></td>
             <td>
                 <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a> 
@@ -17,11 +17,14 @@
             </td>
             <td>
             <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
-            
-            <input type="text" readonly="readonly" id="@string.Format("lblInc_{0}",item.ID)" value="@item.Good" />
+            <input type="text" readonly="readonly" style="background-color:#77FFAA; border-color:#33BB66; text-align:center; width:30;" id="@string.Format("lblInc_{0}",item.ID)" value="@item.Good" />
+            &nbsp;&nbsp;
             <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
-            <input type="text" readonly="readonly" id="@string.Format("lblDec_{0}",item.ID)" value="@item.Bad" />
+            <input type="text" readonly="readonly"  style="background-color:#FF99AA; border-color:#CC4466; text-align:center; width:30" id="@string.Format("lblDec_{0}",item.ID)" value="@item.Bad" />
+            &nbsp;&nbsp;
+            Rank:  <input type="text" style=" text-align:center; width:30" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
 
+            &nbsp;&nbsp; &nbsp;&nbsp;
             <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
 
             <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
