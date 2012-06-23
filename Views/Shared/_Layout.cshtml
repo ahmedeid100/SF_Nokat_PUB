@@ -66,7 +66,7 @@
 
                     var fbid = $("#FBID").val();
                     var name = $("#Name").val();
-                    alert(fbid);
+                    //alert(fbid);
                     $.post("/Joke/AddMember", { FBID: fbid, Name: name }, function (data) {
                         $("#memberID").val(data); //alert(data);
                     });

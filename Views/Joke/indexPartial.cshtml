@@ -7,7 +7,7 @@
         <tr>
         <td>
         <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
-         <img src="http://graph.facebook.com/@item.Member.FBID/picture" width="60" height="60">
+         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40"/>
          </a></td>
             <td>
                 <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a> 
@@ -80,8 +80,12 @@
 
     function loadMemberJokes(memID) {
         $.post("/Joke/MemberIndexPartial", { MemberID: memID }, function (data) {
-            alert(data);
             $('#detailedJokesDiv').html(data);
         });
     }
 </script>
+
+200 char
+text box design
+3660 grid
+unit tesr

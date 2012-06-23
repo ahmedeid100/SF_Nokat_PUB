@@ -1,11 +1,12 @@
 ﻿@model List<DomainModel.Joke>
-@Html.ActionLink("Go to all Nokats", "Index", "Joke");
+
 <div id="AllJokesDiv">
+@Html.ActionLink("Go to all Nokats", "Index", "Joke");
 <table>
     @foreach (var item in Model)
     {
         <tr>
-        <td><img src="http://graph.facebook.com/@item.Member.FBID/picture" width="60" height="60"></td>
+        <td>         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40"/></td>
             <td>
                 @item.Member.Name
             </td>

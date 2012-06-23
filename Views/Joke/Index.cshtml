@@ -31,7 +31,7 @@ Enter Your Joke:
 
         $.post("/Joke/PostJoke", { joketext: jokeText, memberID: memberId }, function (data2) {
             $.post("/Joke/indexPartial",  function (data) {
-                alert(data);
+                //alert(data);
                 $('#detailedJokesDiv').html(data);
             });
 
