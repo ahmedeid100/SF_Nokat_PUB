@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "Index";
 }
+
+<div>
+Enter Your Joke:
+@Html.TextBox("txtPostNokta")
+<input type="submit" id="submitPost" value="Post" onclick="Post()"/>
+</div>
+<div id="AllJokesDiv">
 <table>
     @foreach (var item in Model)
     {
@@ -10,12 +17,21 @@
             <td>
                 @item.Member.Name
             </td>
-            
-        
-           
             <td>
                 @item.JokeText
             </td>
         </tr>
     }
 </table>
+</div>
+
+<script>
+    function Post() {
+        var jokeText = $("#txtPostNokta").val();
+        
+        $.post("/Joke/PostJoke", { joketext: jokeText }, function (data) {
+            $('#AllJokesDiv').html(data);
+        });
+
+    }
+</script>
