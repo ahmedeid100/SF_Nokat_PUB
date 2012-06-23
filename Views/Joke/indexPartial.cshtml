@@ -24,7 +24,8 @@
 <script>
     function increaseVotejoke(jokeId) {
         $.post("/Joke/IncreaseJoke", { jokeID: jokeId }, function (data) {
-            alert(data);
+            var ranks = data;
+            alert(ranks[0]+'_'+ranks[1]);
             //$('#detailedJokesDiv').html(data);
         });
     }
