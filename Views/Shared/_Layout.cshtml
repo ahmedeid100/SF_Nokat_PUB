@@ -12,7 +12,7 @@
     @*<input type="submit" id="inviteFriends" value="Invite Friends" onclick="invite();"/>*@
     <input type="button"
       onclick="sendRequestViaMultiFriendSelector(); return false;"
-      value="Send Request to Many Users with MFS"
+      value="Invite Friends"
     />
     </div>
     <div id="MainContent">
@@ -82,7 +82,7 @@
      
       function sendRequestViaMultiFriendSelector() {
           FB.ui({ method: 'apprequests',
-              message: 'My Great Request'
+              message: 'My Nokat Invitation'
           }, function (responce) { });
       }
 

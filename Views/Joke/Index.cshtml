@@ -13,7 +13,7 @@ Enter Your Joke:
 @Html.Partial("indexPartial")
 </div>
 
-<script>
+<script type="text/javascript">
     function Post() {
         var jokeText = $("#txtPostNokta").val();
         var memberId = $("#memberID").val(); 
@@ -30,7 +30,7 @@ Enter Your Joke:
 //        });
 
         $.post("/Joke/PostJoke", { joketext: jokeText, memberID: memberId }, function (data2) {
-            $.post("/Joke/indexPartial", { joketext: jokeText, memberID: memberId }, function (data) {
+            $.post("/Joke/indexPartial",  function (data) {
                 alert(data);
                 $('#detailedJokesDiv').html(data);
             });

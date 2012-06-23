@@ -5,12 +5,9 @@
     @foreach (var item in Model)
     {
         <tr>
-        <td>6+
-        <a href="" onclick="loadMemberJokes(@item.Member.ID)">
-         <img src="http://graph.facebook.com/@item.Member.FBID/picture" width="60" height="60">
-         </a></td>
+        <td><img src="http://graph.facebook.com/@item.Member.FBID/picture" width="60" height="60"></td>
             <td>
-                <a href="" onclick="loadMemberJokes(@item.Member.ID)">@item.Member.Name</a> 
+                @item.Member.Name
             </td>
             <td>
                 @item.JokeText
@@ -78,10 +75,5 @@
 
     }
 
-    function loadMemberJokes(memID) {
-        $.post("/Joke/MemberIndexPartial", { MemberID: memID }, function (data) {
-            alert(data);
-            $('#detailedJokesDiv').html(data);
-        });
-    }
+   
 </script>
