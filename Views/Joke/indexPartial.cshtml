@@ -1,7 +1,7 @@
 ﻿@model List<DomainModel.Joke>
 
 <div id="AllJokesDiv">
-<table>
+<table  class="pageme">
     @foreach (var item in Model)
     {
         <tr>
@@ -27,7 +27,7 @@
             &nbsp;&nbsp; &nbsp;&nbsp;
             <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
 
-            <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
+ 
             </td>
         </tr>
     }
