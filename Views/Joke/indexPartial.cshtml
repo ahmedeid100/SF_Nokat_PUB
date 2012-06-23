@@ -13,13 +13,14 @@
                 @item.JokeText
             </td>
             <td>
-            <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" /> 
-            <input type="text" readonly="readonly" id="@string.Format("lblInc_{0}",item.ID)" value=@item.Good />
+            <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
+            
+            <input type="text" readonly="readonly" id="@string.Format("lblInc_{0}",item.ID)" value="@item.Good" />
             <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
-            <input type="text" readonly="readonly" id="@string.Format("lblDec_{0}",item.ID)" value=@item.Bad />
+            <input type="text" readonly="readonly" id="@string.Format("lblDec_{0}",item.ID)" value="@item.Bad" />
             <input type="submit" id="share" value="Share"  onclick="sharejoke(@item.ID,@item.JokeText,@item.Member.Name);"/>
 
-            <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value=@item.Rank />
+            <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
             </td>
         </tr>
     }
@@ -43,17 +44,17 @@
         });
     }
 
-    function sharejoke(url, userName, jokeText, imageURL, articleID, FBID) {
+    function sharejoke( userName, jokeText, articleID, FBID) {
         FB.api('/me', function (response) {
-            streamPublish(userName, jokeText, 'My Nokats', url, imageURL, articleID, FBID);
+            var imageURL = 'http://mynokat-1.apphb.com/content/images/logo.jpg';
+            var url = 'https://apps.facebook.com/mynokats';
+            streamPublish(userName, jokeText, 'My Nokats', url, imageURL);
         });
     }
 
-    function streamPublish(userName, description, hrefTitle, hrefLink, imageURL, articleID, fbid) {
+    function streamPublish(userName, description, hrefTitle, hrefLink, imageURL) {
 
-
-
-        var attachment = { 'name': userName+' shared this joke',
+        var attachment = { 'name': userName + ' shared this joke',
             'description': description,
             'media': [{ 'type': 'image', 'src': imageURL, 'href': hrefLink}],
             'href': hrefLink
@@ -63,13 +64,9 @@
             method: 'stream.publish',
             message: 'I just found this Super Cool Website!',
             attachment: attachment,
-            //action_links: [{ text: hrefTitle, href: 'http://apps.facebook.com/ufollow/' }],
             user_message_prompt: 'Post this to your wall?'
         }, function (responce) {
-            $.post("/Articles/SaveUserArticles/", { ArticleID: articleID, FBID: fbid, Action: 'Share' }, function (data) {
-            })
         });
-
 
     }
 
