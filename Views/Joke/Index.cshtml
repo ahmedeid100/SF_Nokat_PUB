@@ -33,9 +33,9 @@ Enter Your Joke:
             URL: "/Joke/PostJoke",
             type: "POST",
             data: { joketext: jokeText },
-            success: function (data) {
-                alert(data);
-                $("#AllJokesDiv").html(data);   //Your resulting action
+            success: function (result) {
+                alert(result);
+                $("#AllJokesDiv").html(result);   //Your resulting action
             }
         });
 
