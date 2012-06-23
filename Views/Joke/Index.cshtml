@@ -3,11 +3,22 @@
     ViewBag.Title = "Index";
 }
 
-<div>
+<table><tr>
+<td valign="top">
 Enter Your Joke:
-@Html.TextArea("txtPostNokta")
+</td>
+<td>
+@Html.TextArea("txtPostNokta", new
+{
+    maxlength = 50, // or other value
+    style = "width: 300px; height: 200px;"
+})
+</td>
+<td>
 <input type="submit" id="submitPost" value="Post" onclick="Post()"/>
-</div>
+</td>
+</tr>
+</table>
 
 <div id="detailedJokesDiv">
 @Html.Partial("indexPartial")
