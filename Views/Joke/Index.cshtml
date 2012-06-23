@@ -30,6 +30,7 @@ Enter Your Joke:
         var jokeText = $("#txtPostNokta").val();
 
         $.ajax({
+            URL: "/Joke/PostJoke",
             type: "POST",
             success: function (data) {
                 alert(data);
