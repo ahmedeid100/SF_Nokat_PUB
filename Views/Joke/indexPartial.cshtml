@@ -1,37 +1,42 @@
 ﻿@model List<DomainModel.Joke>
-
 <div id="AllJokesDiv">
-<table  class="pageme">
-    @foreach (var item in Model)
-    {
-        <tr>
-        <td>
-        <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
-         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="30" height="30"/>
-         </a></td>
-            <td>
-                <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a> 
-            </td>
-            <td>
-                @item.JokeText
-            </td>
-            <td>
-            <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
-            <input type="text" readonly="readonly" style="background-color:#77FFAA; border-color:#33BB66; text-align:center; width:30;" id="@string.Format("lblInc_{0}",item.ID)" value="@item.Good" />
-            &nbsp;&nbsp;
-            <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
-            <input type="text" readonly="readonly"  style="background-color:#FF99AA; border-color:#CC4466; text-align:center; width:30" id="@string.Format("lblDec_{0}",item.ID)" value="@item.Bad" />
-            &nbsp;&nbsp;
-            Rank:  <input type="text" style=" text-align:center; width:30" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
+    <div class="pager">
+    </div>
+    <table class="pageme">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td colspan="3" align="center">
+                    @item.JokeText
+                </td>
+            </tr>
+            <tr style="border-bottom-style:double; ">
+                <td>
+                    <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
+                        <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="30" height="30"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a>
+                </td>
+                <td>
+                    <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
+                    <input type="text" readonly="readonly" style="background-color:#77FFAA; border-style:solid; border-color:#33BB66; text-align:center; width:30;" id="@string.Format("lblInc_{0}", item.ID)" value="@item.Good" />
+                    &nbsp;&nbsp;
+                    <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
+                    <input type="text" readonly="readonly"  style="background-color:#FF99AA;border-style:solid; border-color:#CC4466; text-align:center; width:30" id="@string.Format("lblDec_{0}", item.ID)" value="@item.Bad" />
+                    &nbsp;&nbsp; Rank:
+                    <input type="text" style=" text-align:center; width:30" readonly="readonly" id="@string.Format("lblRnk_{0}", item.ID)" value="@item.Rank" />
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
+                </td>
+            </tr>
 
-            &nbsp;&nbsp; &nbsp;&nbsp;
-            <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
-
- 
-            </td>
-        </tr>
-    }
-</table>
+            
+        }
+    </table>
+    <div class="pager">
+    </div>
 </div>
 <script type="text/javascript" language="javascript">
     function increaseVotejoke(jokeId) {
@@ -87,8 +92,4 @@
         });
     }
 </script>
-
-200 char
-text box design
-3660 grid
-unit tesr
+200 char text box design 3660 grid unit tesr
