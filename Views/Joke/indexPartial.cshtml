@@ -3,21 +3,21 @@
 
 <div id="AllJokesDiv">
 
-    <table class="pageme">
+    <table id="menuTable2">
         @foreach (var item in Model)
         {
             <tr>
-                <td colspan="3" align="center" style="font-size:x-large">
+                <td colspan="3" align="center" style="font-size:large">
                 <br />
                 <br />
                     @item.JokeText
                      <br />   <br />
                 </td>
             </tr>
-            <tr style="border-bottom-style:double;">
+            <tr style="border-bottom-width:medium; border-bottom-color:Orange; border-bottom-style:double;">
                 <td>
                     <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
-                        <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="30" height="30"/>
+                        <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40" style="border:none"/>
                     </a>
                 </td>
                 <td>
@@ -97,5 +97,18 @@
             $('#detailedJokesDiv').html(data);
         });
     }
+
+    $('tbody tr:odd', $('#menuTable2')).hide(); //hiding rows for test
+    var options = {
+        currPage: 2,
+        ignoreRows: $('tbody tr:odd', $('#menuTable2')),
+        optionsForRows: [2, 3, 5],
+        rowsPerPage: 5,
+        firstArrow: (new Image()).src = "./images/firstBlue.gif",
+        prevArrow: (new Image()).src = "./images/prevBlue.gif",
+        lastArrow: (new Image()).src = "./images/lastBlue.gif",
+        nextArrow: (new Image()).src = "./images/nextBlue.gif",
+        topNav: true
+    }
+    $('#menuTable2').tablePagination(options);
 </script>
-200 char text box design 3660 grid unit tesr
