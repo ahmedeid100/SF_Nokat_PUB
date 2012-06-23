@@ -32,6 +32,7 @@ Enter Your Joke:
         $.ajax({
             URL: "/Joke/PostJoke",
             type: "POST",
+            data: { joketext: jokeText },
             success: function (data) {
                 alert(data);
                 $("#AllJokesDiv").html(data);   //Your resulting action
