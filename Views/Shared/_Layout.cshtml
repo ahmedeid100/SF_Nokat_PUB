@@ -6,7 +6,14 @@
 </head>
 <body>
     <div>
-        <img src="../../Content/images/logo.jpg" />
+        <img alt="My Nokat" width=""  src="../../Content/images/logo.jpg" />
+    </div>
+    <div >
+    @*<input type="submit" id="inviteFriends" value="Invite Friends" onclick="invite();"/>*@
+    <input type="button"
+      onclick="sendRequestViaMultiFriendSelector(); return false;"
+      value="Send Request to Many Users with MFS"
+    />
     </div>
     <div id="MainContent">
     </div>
@@ -25,7 +32,8 @@
                 channelUrl: 'http://mynokat-1.apphb.com/channel.html', // Channel File
                 status: true, // check login status
                 cookie: true, // enable cookies to allow the server to access the session
-                xfbml: true  // parse XFBML
+                xfbml: true,  // parse XFBML
+                frictionlessRequests: true
             });
 
             // Additional initialization code here
@@ -70,6 +78,13 @@
 
         });
     }
+
+     
+      function sendRequestViaMultiFriendSelector() {
+          FB.ui({ method: 'apprequests',
+              message: 'My Great Request'
+          }, function (responce) { });
+      }
 
     </script>
     @RenderBody()
