@@ -3,7 +3,7 @@
 
 <div id="AllJokesDiv">
 
-    <table id="menuTable2">
+    <table >
         @foreach (var item in Model)
         {
             <tr>
@@ -98,17 +98,5 @@
         });
     }
 
-    $('tbody tr:odd', $('#menuTable2')).hide(); //hiding rows for test
-    var options = {
-        currPage: 2,
-        ignoreRows: $('tbody tr:odd', $('#menuTable2')),
-        optionsForRows: [2, 3, 5],
-        rowsPerPage: 5,
-        firstArrow: (new Image()).src = "./images/firstBlue.gif",
-        prevArrow: (new Image()).src = "./images/prevBlue.gif",
-        lastArrow: (new Image()).src = "./images/lastBlue.gif",
-        nextArrow: (new Image()).src = "./images/nextBlue.gif",
-        topNav: true
-    }
-    $('#menuTable2').tablePagination(options);
+
 </script>
