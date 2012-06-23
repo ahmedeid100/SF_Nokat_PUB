@@ -19,7 +19,7 @@
             <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
             <input type="text" readonly="readonly" id="@string.Format("lblDec_{0}",item.ID)" value="@item.Bad" />
 
-            <input type="submit" id="share" value="Share"  onclick="sharejoke("@item.JokeText","@item.Member.Name");"/>
+            <input type="submit" id="share" value="Share"  onclick="sharejoke(@item.JokeText,@item.Member.Name);"/>
 
             <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
             </td>
@@ -27,7 +27,7 @@
     }
 </table>
 </div>
-<script>
+<script type="text/javascript" language="javascript">
     function increaseVotejoke(jokeId) {
         $.post("/Joke/IncreaseJoke", { jokeID: jokeId }, function (data) {
 
@@ -47,22 +47,15 @@
 
 
 
+
+
     function sharejoke(jokeText, userName) {
-        $.post("/Joke/DecreaseJoke", { jokeID: jokeId }, function (data) {
-            var ranks = data.split('_');
-            $("#lblDec_" + jokeId).val(ranks[1]);
-            $("#lblRnk_" + jokeId).val(ranks[0]);
+        FB.api('/me', function (response) {
+            var imageURL = 'http://mynokat-1.apphb.com/content/images/logo.jpg';
+            var url = 'https://apps.facebook.com/mynokats';
+            streamPublish(userName, jokeText, 'My Nokats', url, imageURL);
         });
     }
-
-
-//    function sharejoke(jokeText, userName) {
-//        FB.api('/me', function (response) {
-//            var imageURL = 'http://mynokat-1.apphb.com/content/images/logo.jpg';
-//            var url = 'https://apps.facebook.com/mynokats';
-//            streamPublish(userName, jokeText, 'My Nokats', url, imageURL);
-//        });
-//    }
 
     function streamPublish(userName, description, hrefTitle, hrefLink, imageURL) {
 
