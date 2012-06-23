@@ -4,12 +4,15 @@
     <table class="pageme">
         @foreach (var item in Model)
         {
-            <tr style="padding-top:100">
+            <tr style="padding-top: 100">
                 <td colspan="3" align="center">
+                    <br />
+                    <br />
                     @item.JokeText
+                    <br />
                 </td>
             </tr>
-            <tr style="border-bottom-style:double; border-bottom-color:Gray; padding-bottom:50 ">
+            <tr style="border-bottom-style: double; border-bottom-color: Gray; padding-bottom: 50">
                 <td>
                     <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40"/>
                 </td>

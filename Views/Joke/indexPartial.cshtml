@@ -6,12 +6,15 @@
     <table class="pageme">
         @foreach (var item in Model)
         {
-            <tr style="padding-top:100">
+            <tr>
                 <td colspan="3" align="center" style="font-size:larger">
+                <br />
+                <br />
                     @item.JokeText
+                     <br />
                 </td>
             </tr>
-            <tr style="border-bottom-style:double; border-bottom-color:Gray; padding-bottom:50 ">
+            <tr style="border-bottom-style:double; border-bottom-color:Gray;">
                 <td>
                     <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
                         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="30" height="30"/>
@@ -19,6 +22,7 @@
                 </td>
                 <td>
                     <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a>
+                    <br />
                 </td>
                 <td>
                     <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
