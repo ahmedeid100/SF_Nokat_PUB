@@ -19,7 +19,7 @@
             <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
             <input type="text" readonly="readonly" id="@string.Format("lblDec_{0}",item.ID)" value="@item.Bad" />
 
-            <input type="submit" id="share" value="Share"  onclick="sharejoke(@item.JokeText,@item.Member.Name);"/>
+            <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
 
             <input type="text" readonly="readonly" id="@string.Format("lblRnk_{0}",item.ID)" value="@item.Rank" />
             </td>
