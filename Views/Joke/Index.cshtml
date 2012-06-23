@@ -28,6 +28,7 @@ Enter Your Joke:
 <script>
     function Post() {
         var jokeText = $("#txtPostNokta").val();
+        var memberId = $("#memberID").val(); 
         alert(jokeText);
 
 //        $.ajax({
@@ -41,7 +42,7 @@ Enter Your Joke:
 //        });
 
 
-        $.post("/Joke/PostJoke", { joketext: jokeText }, function (data) {
+        $.post("/Joke/PostJoke", { joketext: jokeText, memberID: memberId }, function (data) {
             alert(data);
             $('#AllJokesDiv').html(data);
         });

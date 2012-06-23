@@ -17,6 +17,7 @@
     @Html.Hidden("FBID", "")
     @Html.Hidden("Name", "")
     @Html.Hidden("access_token", "")
+    @Html.Hidden("memberID", "")
     <script type="text/javascript" language="javascript">
         window.fbAsyncInit = function () {
             FB.init({
@@ -59,7 +60,7 @@
                     var name = $("#Name").val();
                     alert(fbid);
                     $.post("/Joke/AddMember", { FBID: fbid, Name: name }, function (data) {
-                        alert(data);
+                        $("#memberID").val(data); //alert(data);
                     });
                 });
 
