@@ -1,0 +1,18 @@
+﻿@model List<DomainModel.Joke>
+
+<div id="AllJokesDiv">
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+        <td><img src="http://graph.facebook.com/@item.Member.FBID/picture" width="60" height="60"></td>
+            <td>
+                @item.Member.Name
+            </td>
+            <td>
+                @item.JokeText
+            </td>
+        </tr>
+    }
+</table>
+</div>
