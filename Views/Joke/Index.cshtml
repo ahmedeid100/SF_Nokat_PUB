@@ -6,17 +6,13 @@
     @foreach (var item in Model)
     {
         <tr>
+        <td><img src="http://graph.facebook.com/@item.Member.FBID/picture" width="60" height="60"></td>
             <td>
-                MemberID
+                @item.Member.Name
             </td>
-            <td>@item.MemberID
-            </td>
-        </tr>
-    
-        <tr>
-            <td>
-                Joke
-            </td>
+            
+        
+           
             <td>
                 @item.JokeText
             </td>
