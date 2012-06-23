@@ -28,6 +28,7 @@ Enter Your Joke:
 <script>
     function Post() {
         var jokeText = $("#txtPostNokta").val();
+        alert(jokeText);
 
         $.ajax({
             URL: "/Joke/PostJoke",
