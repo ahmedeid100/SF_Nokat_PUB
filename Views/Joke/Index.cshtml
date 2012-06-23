@@ -19,21 +19,21 @@ Enter Your Joke:
         var memberId = $("#memberID").val(); 
         alert(jokeText);
 
-//        $.ajax({
-//            URL: "/Joke/PostJoke",
-//            type: "POST",
-//            data: { joketext: jokeText , memberID: memberId},
-//            success: function (result) {
-//                alert(result);
-//                $("#AllJokesDiv").html(result);   //Your resulting action
-//            }
-//        });
-
-
-        $.post("/Joke/indexPartial", { joketext: jokeText, memberID: memberId }, function (data) {
-            alert(data);
-            $('#detailedJokesDiv').html(data);
+        $.ajax({
+            URL: "/Joke/indexPartial",
+            type: "POST",
+            data: { joketext: jokeText , memberID: memberId},
+            success: function (result) {
+                alert(result);
+                $("#detailedJokesDiv").html(result);   //Your resulting action
+            }
         });
+
+
+//        $.post("/Joke/indexPartial", { joketext: jokeText, memberID: memberId }, function (data) {
+//            alert(data);
+//            $('#detailedJokesDiv').html(data);
+//        });
 
     }
 </script>
