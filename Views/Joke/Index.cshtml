@@ -31,21 +31,21 @@ Enter Your Joke:
         var memberId = $("#memberID").val(); 
         alert(jokeText);
 
-//        $.ajax({
-//            URL: "/Joke/PostJoke",
-//            type: "POST",
-//            data: { joketext: jokeText },
-//            success: function (result) {
-//                alert(result);
-//                $("#AllJokesDiv").html(result);   //Your resulting action
-//            }
-//        });
-
-
-        $.post("/Joke/PostJoke", { joketext: jokeText, memberID: memberId }, function (data) {
-            alert(data);
-            $('#AllJokesDiv').html(data);
+        $.ajax({
+            URL: "/Joke/PostJoke",
+            type: "POST",
+            data: { joketext: jokeText , memberID: memberId},
+            success: function (result) {
+                alert(result);
+                $("#AllJokesDiv").html(result);   //Your resulting action
+            }
         });
+
+
+//        $.post("/Joke/PostJoke", { joketext: jokeText, memberID: memberId }, function (data) {
+//            alert(data);
+//            $('#AllJokesDiv').html(data);
+//        });
 
     }
 </script>
