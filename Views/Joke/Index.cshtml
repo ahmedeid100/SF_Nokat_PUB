@@ -5,7 +5,7 @@
 
 <div>
 Enter Your Joke:
-@Html.TextBox("txtPostNokta")
+@Html.TextArea("txtPostNokta")
 <input type="submit" id="submitPost" value="Post" onclick="Post()"/>
 </div>
 <div id="AllJokesDiv">
@@ -28,10 +28,19 @@ Enter Your Joke:
 <script>
     function Post() {
         var jokeText = $("#txtPostNokta").val();
-        
-        $.post("/Joke/PostJoke", { joketext: jokeText }, function (data) {
-            $('#AllJokesDiv').html(data);
+
+        $.ajax({
+            type: "POST",
+            success: function (data) {
+                alert(data);
+                $("#AllJokesDiv").html(data);   //Your resulting action
+            }
         });
+
+
+//        $.post("/Joke/PostJoke", { joketext: jokeText }, function (data) {
+//            $('#AllJokesDiv').html(data);
+//        });
 
     }
 </script>
