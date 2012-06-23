@@ -66,13 +66,13 @@ $(document).ready(function() {
         table.pageme
         {
             border-collapse: collapse;
-            border: 1px solid #ccc;
+            border: 0px solid #ccc;
         }
         
         table.pageme td
         {
             border-collapse: collapse;
-            border: 1px solid #ccc;
+            border: 0px solid #ccc;
         }
         
         table, div
@@ -82,7 +82,7 @@ $(document).ready(function() {
     </style>
 </head>
 <body>
-    <table width="100%">
+    <table >
         <tr>
             <td>
                 <img alt="My Nokat" src="../../Content/images/sf-logo-apps.png" />
@@ -90,6 +90,11 @@ $(document).ready(function() {
             <td>
             </td>
             <td>
+               
+        @*<input type="submit" id="inviteFriends" value="Invite Friends" onclick="invite();"/>*@
+        <input type="button" onclick="sendRequestViaMultiFriendSelector(); return false;"
+            value="Invite Friends" />
+
             </td>
         </tr>
         <tr>
@@ -104,11 +109,7 @@ $(document).ready(function() {
             </td>
         </tr>
     </table>
-    <div>
-        @*<input type="submit" id="inviteFriends" value="Invite Friends" onclick="invite();"/>*@
-        <input type="button" onclick="sendRequestViaMultiFriendSelector(); return false;"
-            value="Invite Friends" />
-    </div>
+
     <div id="MainContent">
     </div>
     <div id="fb-root">

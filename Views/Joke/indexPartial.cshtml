@@ -1,16 +1,18 @@
 ﻿@model List<DomainModel.Joke>
-<div id="AllJokesDiv">
+
     <div class="pager">
     </div>
+<div id="AllJokesDiv">
+
     <table class="pageme">
         @foreach (var item in Model)
         {
-            <tr>
+            <tr style="padding-top:20">
                 <td colspan="3" align="center">
                     @item.JokeText
                 </td>
             </tr>
-            <tr style="border-bottom-style:double; ">
+            <tr style="border-bottom-style:double; border-bottom-color:Gray; padding-bottom:20 ">
                 <td>
                     <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
                         <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="30" height="30"/>
@@ -35,9 +37,11 @@
             
         }
     </table>
+
+</div>
     <div class="pager">
     </div>
-</div>
+
 <script type="text/javascript" language="javascript">
     function increaseVotejoke(jokeId) {
         $.post("/Joke/IncreaseJoke", { jokeID: jokeId }, function (data) {
