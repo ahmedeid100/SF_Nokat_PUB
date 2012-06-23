@@ -30,9 +30,9 @@ Enter Your Joke:
 //        });
 
 
-        $.post("/Joke/PostJoke", { joketext: jokeText, memberID: memberId }, function (data) {
+        $.post("/Joke/indexPartial", { joketext: jokeText, memberID: memberId }, function (data) {
             alert(data);
-            $('#AllJokesDiv').html(data);
+            $('#detailedJokesDiv').html(data);
         });
 
     }
