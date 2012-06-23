@@ -12,7 +12,58 @@
             <td>
                 @item.JokeText
             </td>
+            <td>
+            <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
+            <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
+            <input type="submit" id="share" value="Share"  onclick="sharejoke(@item.ID,@item.JokeText,@item.Member.Name);"/>
+            </td>
         </tr>
     }
 </table>
 </div>
+<script>
+    function increaseVotejoke(jokeId) {
+        $.post("/Joke/IncreaseJoke", { jokeID: jokeId }, function (data) {
+            alert(data);
+            //$('#detailedJokesDiv').html(data);
+        });
+    }
+
+    function decreaseVotejoke(jokeId) {
+        $.post("/Joke/DecreaseJoke", { jokeID: jokeId }, function (data) {
+            alert(data);
+            //$('#detailedJokesDiv').html(data);
+        });
+    }
+
+    function sharejoke(url, userName, jokeText, imageURL, articleID, FBID) {
+        FB.api('/me', function (response) {
+            streamPublish(userName, jokeText, 'My Nokats', url, imageURL, articleID, FBID);
+        });
+    }
+
+    function streamPublish(userName, description, hrefTitle, hrefLink, imageURL, articleID, fbid) {
+
+
+
+        var attachment = { 'name': userName+' shared this joke',
+            'description': description,
+            'media': [{ 'type': 'image', 'src': imageURL, 'href': hrefLink}],
+            'href': hrefLink
+        };
+
+        FB.ui({
+            method: 'stream.publish',
+            message: 'I just found this Super Cool Website!',
+            attachment: attachment,
+            //action_links: [{ text: hrefTitle, href: 'http://apps.facebook.com/ufollow/' }],
+            user_message_prompt: 'Post this to your wall?'
+        }, function (responce) {
+            $.post("/Articles/SaveUserArticles/", { ArticleID: articleID, FBID: fbid, Action: 'Share' }, function (data) {
+            })
+        });
+
+
+    }
+
+</script>
