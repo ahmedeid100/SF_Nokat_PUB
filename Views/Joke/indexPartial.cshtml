@@ -111,6 +111,7 @@
 
      function loadAllJokes(PgNo) {
         $.post("/Joke/indexPartial", { PageNo: PgNo }, function (data) {
+        alert(data);
             $('#detailedJokesDiv').html(data);
         });
 
