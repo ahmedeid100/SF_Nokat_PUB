@@ -1,58 +1,61 @@
 ﻿@model List<DomainModel.Joke>
-<div id="AllJokesDiv">
-    <table>
-        @foreach (var item in Model)
-        {
-            <tr style="border-bottom-width: medium; border-bottom-color: Orange; border-bottom-style: groove;">
-                <td colspan="3" align="center" style="font-size: large">
-                    <img src="../../Content/images/hrs.jpg" />
-                    <br />
-                    <br />
-                    @item.JokeText
-                    <br />
-                    <br />
-                </td>
-            </tr>
-            <tr style="border-bottom-width: medium; border-bottom-color: Orange; border-bottom-style: double;">
-                <td>
-                    <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
-                        <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40" style="border:none"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a>
-                    <br />
-                </td>
-                <td>
-                    <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
-                    <input type="text" readonly="readonly" style="background-color:#77FFAA; border-style:solid; border-color:#33BB66; text-align:center; width:30px;" id="@string.Format("lblInc_{0}", item.ID)" value="@item.Good" />
-                    &nbsp;&nbsp;
-                    <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
-                    <input type="text" readonly="readonly"  style="background-color:#FF99AA;border-style:solid; border-color:#CC4466; text-align:center; width:30px" id="@string.Format("lblDec_{0}", item.ID)" value="@item.Bad" />
-                    &nbsp;&nbsp; Rank:
-                    <input type="text" style=" text-align:center; width:30" readonly="readonly" id="@string.Format("lblRnk_{0}", item.ID)" value="@item.Rank" />
-                    &nbsp;&nbsp; &nbsp;&nbsp;
-                    <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
-                </td>
-            </tr>
-
-            
-        }
-
-         <tr style="border-bottom-width: medium; border-bottom-color: Orange; border-bottom-style: groove;">
-                <td colspan="3" align="center" style="font-size: large">
-                    <img src="../../Content/images/hrs.jpg" />
-                    <br />
-                   <div id="demo5">
-                    </div>
-                    <br />
-                </td>
-            </tr>
-    </table>
-
+<div id="example1">
+  <div><p>Lorem ipsum...</p></div>
+  <div><p>Donec ultricies...</p></div>
 </div>
 
+<div id="AllJokesDiv">
+        <table>
+            @foreach (var item in Model)
+        {
+                          
+                <tr style="border-bottom-width: medium; border-bottom-color: Orange; border-bottom-style: groove;">
+                    <td colspan="3" align="center" style="font-size: large">
+                        <img src="../../Content/images/hrs.jpg" />
+                        <br />
+                        <br />
+                        @item.JokeText
+                        <br />
+                        <br />
+                    </td>
+                </tr>
+                <tr style="border-bottom-width: medium; border-bottom-color: Orange; border-bottom-style: double;">
+                    <td>
+                        <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">
+                            <img alt="Press for more user jokes" src="http://graph.facebook.com/@item.Member.FBID/picture" width="40" height="40" style="border:none"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" onclick="loadMemberJokes(@item.Member.ID); return false;">@item.Member.Name</a>
+                        <br />
+                    </td>
+                    <td>
+                        <input type="submit" id="increaseVote" value="+" onclick="increaseVotejoke(@item.ID);" />
+                        <input type="text" readonly="readonly" style="background-color:#77FFAA; border-style:solid; border-color:#33BB66; text-align:center; width:30px;" id="@string.Format("lblInc_{0}", item.ID)" value="@item.Good" />
+                        &nbsp;&nbsp;
+                        <input type="submit" id="decreaseVote" value="-"  onclick="decreaseVotejoke(@item.ID);"/>
+                        <input type="text" readonly="readonly"  style="background-color:#FF99AA;border-style:solid; border-color:#CC4466; text-align:center; width:30px" id="@string.Format("lblDec_{0}", item.ID)" value="@item.Bad" />
+                        &nbsp;&nbsp; Rank:
+                        <input type="text" style=" text-align:center; width:30" readonly="readonly" id="@string.Format("lblRnk_{0}", item.ID)" value="@item.Rank" />
+                        &nbsp;&nbsp; &nbsp;&nbsp;
+                        <input type="submit" id="share" value="Share"  onclick="sharejoke('@item.JokeText','@item.Member.Name');"/>
+                    </td>
+                </tr>
+              
+
+          
+        }
+        </table>
+</div>
+
+
 <script type="text/javascript">
+
+function pager()
+{
+$('#example1').pager('div');
+
+}
 
 
 
@@ -117,26 +120,3 @@
         });
 
 </script>
-<script src="../../Scripts/jquery.paginate.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-
-        $("#demo5").paginate({
-            count: 5,
-            start: 1,
-            display: 5,
-            border: true,
-            border_color: '#fff',
-            text_color: '#fff',
-            background_color: 'black',
-            border_hover_color: '#ccc',
-            text_hover_color: '#000',
-            background_hover_color: '#fff',
-            images: false,
-            mouse: 'press',
-            onChange: function (page) {
-                loadAllJokes(page);
-            }
-        });
-    });
-    </script>
