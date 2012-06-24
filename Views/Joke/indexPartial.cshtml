@@ -110,6 +110,7 @@
     }
 
      function loadAllJokes(PgNo) {
+     alert('da5al el func');
         $.post("/Joke/indexPartial", { PageNo: PgNo }, function (data) {
         alert(data);
             $('#detailedJokesDiv').html(data);
