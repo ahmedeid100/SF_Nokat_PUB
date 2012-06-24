@@ -38,9 +38,18 @@
 
             
         }
+
+         <tr style="border-bottom-width: medium; border-bottom-color: Orange; border-bottom-style: groove;">
+                <td colspan="3" align="center" style="font-size: large">
+                    <img src="../../Content/images/hrs.jpg" />
+                    <br />
+                   <div id="demo5">
+                    </div>
+                    <br />
+                </td>
+            </tr>
     </table>
-    <div id="demo5">
-    </div>
+
 </div>
 
 <script type="text/javascript">
@@ -100,6 +109,10 @@
         });
     }
 
+     function loadAllJokes(PgNo) {
+        $.post("/Joke/indexPartial", { PageNo: PgNo }, function (data) {
+            $('#detailedJokesDiv').html(data);
+        });
 
 </script>
 <script src="../../Scripts/jquery.paginate.js" type="text/javascript"></script>
@@ -107,9 +120,9 @@
     $(function () {
 
         $("#demo5").paginate({
-            count: 10,
+            count: 5,
             start: 1,
-            display: 7,
+            display: 5,
             border: true,
             border_color: '#fff',
             text_color: '#fff',
@@ -120,6 +133,7 @@
             images: false,
             mouse: 'press',
             onChange: function (page) {
+                loadAllJokes(page);
             }
         });
     });
