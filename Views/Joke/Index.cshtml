@@ -20,8 +20,8 @@ Enter Your Joke:
 <td>
 <input type="submit" id="submitPost" value="Post" onclick="Post()"/>
 </td>
-<td>
-<a href="http://apps.facebook.com/mynokats/">Home Nokat</a>
+<td style="margin-right:100px;">&nbsp;&nbsp;&nbsp;&nbsp;
+<a onclick="loadAllJokes()">Home Nokat</a>
 </td>
 </tr>
 </table>
@@ -54,6 +54,14 @@ Enter Your Joke:
 
         });
 
-       
+
+    }
+
+
+
+    function loadAllJokes() {
+        $.post("/Joke/indexPartial", function (data) {
+            $('#detailedJokesDiv').html(data);
+        });
     }
 </script>
