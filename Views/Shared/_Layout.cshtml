@@ -4,10 +4,10 @@
     <script src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
   
-     <style>
+     <style type="text/css">
         body
         {
-            background: #FFFFFF url(../../Content/images/dots.jpg) repeat-x repeat-y top left;
+            background: #FFFFFF "@Url.Content("~/Content/images/dots.jpg")"  repeat-x repeat-y top left;
             font-family: verdana;
             padding: 0px;
             margin: 0px;
@@ -95,7 +95,6 @@
         }
     </style>
 
-    </script>
 </head>
 <body>
     <table >
